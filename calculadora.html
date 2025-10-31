@@ -3,7 +3,7 @@
 <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Calculadora JS Richard</title>
+     <title>Calculadora Patricio</title>
 
      <style type="text/css">
 		*{
@@ -14,14 +14,14 @@
 		
 		body{
 			font-family: arial;
-			background: #ccc;
-			color: #3ba8db;
+			background: lightgreen;
+			color: lightpink;
 		}
 
 		.contenedor{
 			width: 70%;
 			margin: 100px auto;
-			background: #21295c;
+			background: darkcyan;
 			padding: 20px;
 			display: flex;
 			align-items: center;
@@ -60,7 +60,7 @@
 			text-transform: uppercase;
 			font-weight: 700;
 			font-size: 14px;
-			background: #3ba8db;
+			background: lightpink;
 			color: #fff;
 			border: 0;
 			transition: all 0.3s;
@@ -95,20 +95,45 @@
 		</div>
 
 		<div id="btns" class="btns">
-			<button id="suma">Sumar</button>
-			<button id="resta">Restar</button>
-			<button id="multiplica">Multiplicar</button>
-			<button id="divide">Dividir</button>
-			<button id="exponente">Exponente</button>
-			<button id="raiz">Raiz</button>
+  <button onclick="calcular('+')">Sumar</button>
+  <button onclick="calcular('-')">Restar</button>
+  <button onclick="calcular('*')">Multiplicar</button>
+  <button onclick="calcular('/')">Dividir</button>
+  <button onclick="calcular('^')">Exponente</button>
+  <button onclick="calcular('√')">Raíz</button>
+</div>
 
-
-		</div>
 			
 		<div class="result">
 			<p id="resultado">-</p>
 		</div>	
 	</div>
+
+	<script>
+		function calcular(op) {
+			let num1 = parseFloat(document.getElementById("numero1").value);
+			let num2 = parseFloat(document.getElementById("numero2").value);
+			let resultado;
+
+			if (op === '+') {
+				resultado = num1 + num2;
+			} else if (op === '-') {
+				resultado = num1 - num2;
+			} else if (op === '*') {
+				resultado = num1 * num2;
+			} else if (op === '/') {
+				resultado = num2 !== 0 ? num1 / num2 : "Error (÷0)";
+			} else if (op === '^') {
+				resultado = Math.pow(num1, num2);
+			} else if (op === '√') {
+				resultado = Math.sqrt(num1);
+			} else {
+				resultado = "Operación inválida";
+			}
+
+			document.getElementById("resultado").textContent = "Resultado: " + resultado;
+		}
+	</script>
 
 </body>
 </html>
